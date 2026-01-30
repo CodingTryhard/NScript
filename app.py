@@ -59,7 +59,7 @@ class FairnessAuditorBackend:
         risk_calc = BiasSeverityCalculator()
         risk_assessment = risk_calc.calculate_score(scorecard)
 
-        # 5. CLEANUP & RENAMING (FIXED HERE)
+        # 5. CLEANUP & RENAMING
         display_df = audit_results.copy()
         
         # Helper to parse what changed (if not present)

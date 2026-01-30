@@ -45,7 +45,7 @@ def build_model_pipeline(numeric_features, categorical_features):
             ('cat', categorical_transformer, categorical_features)
         ])
 
-    # 4. create the full pipeline with Logistic Regression
+    # 4. Create the full pipeline with Logistic Regression
     pipeline = Pipeline(steps=[
         ('preprocessor', preprocessor),
         ('classifier', LogisticRegression(solver='liblinear', random_state=42))
@@ -86,21 +86,3 @@ def train_and_predict(data, target_col, numeric_feats, cat_feats):
     results_df['probability'] = probs
 
     return model, results_df
-
-# --- Execution ---
-
-if __name__ == "__main__":
-    # 1. Get Data
-    df = generate_mock_data()
-
-    # 2. Define Feature Metadata
-    NUMERIC_FEATURES = ['income', 'credit_score', 'years_employed']
-    CATEGORICAL_FEATURES = ['education', 'gender'] # 'gender' is our protected attribute
-    TARGET_COLUMN = 'loan_approved'
-
-    # 3. Run Pipeline
-    trained_model, output_df = train_and_predict(df, TARGET_COLUMN, NUMERIC_FEATURES, CATEGORICAL_FEATURES)
-
-    # 4. Preview Output
-    print("\nSample Predictions:")
-    print(output_df[['gender', 'income', 'prediction', 'probability']].head())

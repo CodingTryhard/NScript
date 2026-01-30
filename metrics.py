@@ -92,27 +92,3 @@ class FairnessMetrics:
             "flip_rates": cls.calculate_flip_rate(audit_df),
             "confidence_sensitivity": cls.calculate_confidence_sensitivity(audit_df)
         }
-
-# --- Integration Test ---
-if __name__ == "__main__":
-    # Mock Output from Module 4
-    mock_audit_results = pd.DataFrame({
-        '_cf_type': [
-            'Original', 
-            'Counterfactual (gender=Male)', 
-            'Counterfactual (race=Black)'
-        ],
-        'model_prediction': [1, 1, 0], # Original is 1. Race flip causes 0 (Flip).
-        'model_probability': [0.80, 0.79, 0.40],
-        'prob_delta': [0.0, -0.01, -0.40],
-        'label_changed': [False, False, True]
-    })
-
-    scorecard = FairnessMetrics.generate_scorecard(mock_audit_results)
-    
-    print("--- Fairness Scorecard ---")
-    print(f"Overall Consistency: {scorecard['consistency_score']*100}%")
-    print(f"Confidence Sensitivity: {scorecard['confidence_sensitivity']}")
-    print("Flip Rates by Attribute:")
-    for attr, rate in scorecard['flip_rates'].items():
-        print(f"  - {attr}: {rate*100}% failure rate")

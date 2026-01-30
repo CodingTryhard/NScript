@@ -19,7 +19,7 @@ class ExplainabilityAuditor:
         
         # We use a KernelExplainer because it is model-agnostic (works with Pipelines).
         # We pass the probability function so we see contributions to the 'Score', not just the label.
-        # summarizing background data with kmeans (k=50) speeds up calculation massively.
+        # Summarizing background data with kmeans (k=50) speeds up calculation massively.
         self.background_summary = shap.kmeans(background_data, 50)
         self.explainer = shap.KernelExplainer(self.model.predict_proba, self.background_summary)
 
@@ -56,7 +56,7 @@ class ExplainabilityAuditor:
         explanation_df = pd.DataFrame({
             'Feature': original_row.index,
             
-            # original instance details
+            # Original instance details
             'Original_Value': original_row.values,
             'Original_Impact': vals[0], # SHAP value for row 0
             
@@ -76,26 +76,3 @@ class ExplainabilityAuditor:
         explanation_df = explanation_df.sort_values(by='Abs_Delta', ascending=False).drop(columns=['Abs_Delta'])
 
         return explanation_df
-
-# --- Integration Test ---
-if __name__ == "__main__":
-    # NOTE: This module requires a live trained model and SHAP installed.
-    # The following creates a simplified mock environment to demonstrate logic 
-    # without needing the heavy dependencies of Module 1 loaded in this cell.
-    
-    # Mocking the output of a hypothetical run
-    print("--- Mocking Explainability Report ---")
-    
-    mock_report = pd.DataFrame({
-        'Feature': ['gender', 'income', 'credit_score', 'education'],
-        'Original_Value': ['Male', 50000, 650, 'Bachelors'],
-        'Original_Impact': [0.15, 0.20, 0.10, 0.05], # 'Male' boosted score by +0.15
-        'CF_Value': ['Female', 50000, 650, 'Bachelors'],
-        'CF_Impact': [-0.25, 0.20, 0.10, 0.05],      # 'Female' penalized score by -0.25
-    })
-    
-    # Calculate Delta
-    mock_report['Impact_Delta'] = mock_report['CF_Impact'] - mock_report['Original_Impact']
-    
-    # Display
-    print(mock_report.to_markdown(index=False))

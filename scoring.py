@@ -86,26 +86,3 @@ class BiasSeverityCalculator:
                 "Inconsistency Impact": round(self.weights['inconsistency'] * inconsistency_rate * 100, 2)
             }
         )
-
-# --- Integration Test ---
-if __name__ == "__main__":
-    # Mock Metrics from Module 5
-    # Scenario: Model rarely flips decisions (Good), but has huge probability swings (Bad/Latent).
-    mock_metrics = {
-        "consistency_score": 0.95,        # 95% of predictions stayed the same
-        "flip_rates": {
-            "gender": 0.05,               # 5% flip rate for gender
-            "race": 0.02                  # 2% flip rate for race
-        },
-        "confidence_sensitivity": 0.35    # High sensitivity! (e.g. 0.90 -> 0.55)
-    }
-
-    calculator = BiasSeverityCalculator()
-    assessment = calculator.calculate_score(mock_metrics)
-
-    print("--- Executive Risk Summary ---")
-    print(f"Bias Severity Index: {assessment.severity_score} / 100")
-    print(f"Risk Level:          [{assessment.risk_level}]")
-    print("\nScore Breakdown (Points contribution):")
-    for factor, points in assessment.breakdown.items():
-        print(f"  - {factor}: {points}")

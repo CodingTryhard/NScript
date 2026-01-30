@@ -4,7 +4,7 @@ from sklearn.pipeline import Pipeline
 
 def evaluate_fairness(model: Pipeline, cf_data: pd.DataFrame, target_class: int = 1) -> pd.DataFrame:
     """
-     audits the model by running predictions on both original and counterfactual data.
+     Audits the model by running predictions on both original and counterfactual data.
     
     This function strictly treats the model as a 'Black Box'. It does not access coefficients
     or retrain. It simply inputs X and observes Y.
@@ -52,41 +52,9 @@ def evaluate_fairness(model: Pipeline, cf_data: pd.DataFrame, target_class: int 
     original_pred = results.loc[results['_cf_type'] == 'Original', 'model_prediction'].values[0]
     results['label_changed'] = results['model_prediction'] != original_pred
 
-    # 5. formatting for readability
+    # 5. Formatting for readability
     output_cols = ['_cf_type', 'model_prediction', 'model_probability', 'prob_delta', 'label_changed']
     # Add back the features for context (optional, usually good for debugging)
     feature_cols = [c for c in X_input.columns if c in results.columns] 
     
     return results[output_cols + feature_cols]
-
-# --- Integration Test (requires previous modules) ---
-if __name__ == "__main__":
-    # Assuming 'trained_model' from Module 1 and 'cf_results' from Module 3 exist.
-    # For this snippet to run standalone, we need to mock them.
-    
-    # MOCK SETUP (If running this cell alone)
-    # ---------------------------------------------------------
-    # Mocking a model that is biased against 'Male'
-    class MockModel:
-        def predict(self, X): return np.where(X['gender'] == 'Female', 1, 0)
-        def predict_proba(self, X): 
-            # Returns [prob_0, prob_1]
-            p1 = np.where(X['gender'] == 'Female', 0.85, 0.45)
-            return np.column_stack((1-p1, p1))
-    
-    mock_model = MockModel()
-    
-    # Mock CF Data (from Module 3)
-    mock_cf_data = pd.DataFrame({
-        '_cf_type': ['Original', 'Counterfactual (gender=Male)'],
-        'income': [75000, 75000],
-        'gender': ['Female', 'Male'],
-        'loan_approved': [1, 1] # Ignored by model
-    })
-    # ---------------------------------------------------------
-
-    # EXECUTION
-    audit_report = evaluate_fairness(mock_model, mock_cf_data)
-    
-    print("\n--- Fairness Audit Report ---")
-    print(audit_report[['_cf_type', 'model_prediction', 'model_probability', 'prob_delta', 'label_changed']].to_markdown(index=False))
