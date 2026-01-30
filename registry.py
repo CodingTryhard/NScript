@@ -95,3 +95,26 @@ class SensitiveAttributeRegistry:
             "proxies": self.metadata.proxy_attributes,
             "status": "Active"
         }
+
+# --- Integration Test ---
+if __name__ == "__main__":
+    # Mock data from Module 1
+    # Note: We must ensure the column names match Module 1 exactly
+    mock_df = pd.DataFrame({
+        'income': [50000, 60000],
+        'gender': ['Male', 'Female'],
+        'zip_code': [90210, 10001], # Potential proxy for race/income
+        'loan_approved': [0, 1]
+    })
+
+    registry = SensitiveAttributeRegistry(mock_df)
+    
+    # User defines schema
+    try:
+        config = registry.register_attributes(
+            protected=['gender'], 
+            proxies=['zip_code']
+        )
+        print("Audit Configuration:", registry.get_audit_config())
+    except ValueError as e:
+        print(e)

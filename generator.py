@@ -94,3 +94,28 @@ class CounterfactualGenerator:
         # Combine into a single DataFrame for batch prediction
         full_cf_df = pd.concat(counterfactuals, ignore_index=True)
         return full_cf_df
+
+# --- Integration Test ---
+if __name__ == "__main__":
+    # 1. Create a mock applicant (Female, High Income)
+    applicant = pd.Series({
+        'income': 75000,
+        'credit_score': 720,
+        'years_employed': 5,
+        'education': 'Bachelors',
+        'gender': 'Female',      # Protected
+        'loan_approved': 1       # Ground Truth (ignored for generation)
+    })
+
+    # 2. Define Mappings
+    mappings = {'gender': ['Male', 'Female', 'Non-Binary']}
+
+    # 3. Instantiate Generator
+    cf_gen = CounterfactualGenerator(domain_mappings=mappings)
+
+    # 4. Generate
+    print("Generating Counterfactuals...")
+    cf_results = cf_gen.generate_counterfactuals(applicant, sensitive_attributes=['gender'])
+
+    # 5. Review
+    print(cf_results[['_cf_type', 'gender', 'income', 'credit_score']])

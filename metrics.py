@@ -3,7 +3,7 @@ import numpy as np
 
 class FairnessMetrics:
     """
-    Computes quantitative fairness metrics based on counterfactual analysis.
+    Computes quantitative fairness metrics and identifies drivers of bias.
     """
 
     @staticmethod
@@ -11,22 +11,18 @@ class FairnessMetrics:
         """
         Metric 1: Counterfactual Consistency Score
         Formula: (Number of Twin Predictions == Original Prediction) / Total Twins
-        
-        Ethical Meaning:
-        Measures the stability of the model. A score of 1.0 (100%) means the model 
-        is 'blind' to the sensitive attribute—it consistently gives the same decision 
-        regardless of the protected trait.
         """
-        # Filter out the 'Original' row to focus on the generated twins
+        # USE RAW COLUMN NAME '_cf_type'
         twins = audit_df[audit_df['_cf_type'] != 'Original']
         
         if len(twins) == 0:
-            return 1.0 # Trivial consistency if no counterfactuals exist
+            return 1.0 
 
-        # Count how many twins have the same label as the original (label_changed == False)
-        # Note: 'label_changed' was calculated in Module 4
+        # We rely on 'label_changed' calculated in Module 4
+        if 'label_changed' not in twins.columns:
+             return 0.0
+             
         consistent_count = (~twins['label_changed']).sum()
-        
         score = consistent_count / len(twins)
         return round(score, 4)
 
@@ -34,61 +30,112 @@ class FairnessMetrics:
     def calculate_flip_rate(audit_df: pd.DataFrame) -> dict:
         """
         Metric 2: Flip Rate per Sensitive Attribute
-        
-        Ethical Meaning:
-        Identifies specific vulnerabilities. A high flip rate for 'gender' vs 'race' 
-        tells developers exactly where the bias is concentrated.
         """
         twins = audit_df[audit_df['_cf_type'] != 'Original'].copy()
         
-        # We need to parse which attribute was changed from the string text or metadata
-        # Assuming format "Counterfactual (attr=val)" from Module 3
-        # A robust implementation would pass this metadata separately, 
-        # but here we parse for simplicity.
-        
-        # Extract attribute name from string: "Counterfactual (gender=Male)" -> "gender"
-        try:
-            twins['changed_attr'] = twins['_cf_type'].apply(
+        # Parse attribute name if needed
+        if 'changed_attr' not in twins.columns:
+             twins['changed_attr'] = twins['_cf_type'].apply(
                 lambda x: x.split('(')[1].split('=')[0] if '(' in x else 'unknown'
             )
-        except IndexError:
-            twins['changed_attr'] = 'unknown'
 
         flip_rates = {}
+        # Avoid crashing on empty twins
+        if twins.empty:
+            return {}
+
         for attr in twins['changed_attr'].unique():
             subset = twins[twins['changed_attr'] == attr]
-            flips = subset['label_changed'].sum()
-            total = len(subset)
-            flip_rates[attr] = round(flips / total, 4)
+            if len(subset) > 0:
+                flips = subset['label_changed'].sum()
+                flip_rates[attr] = round(flips / len(subset), 4)
+            else:
+                flip_rates[attr] = 0.0
             
         return flip_rates
 
     @staticmethod
     def calculate_confidence_sensitivity(audit_df: pd.DataFrame) -> float:
         """
-        Metric 3: Confidence Sensitivity (Average Absolute Deviation)
-        Formula: Mean(|Prob_Original - Prob_Counterfactual|)
-        
-        Ethical Meaning:
-        Even if the label doesn't flip (e.g., Approved -> Approved), a drop in 
-        confidence (90% -> 51%) indicates 'latent bias'. The model is technically 
-        fair in outcome, but treats the groups differently internally.
+        Metric 3: Confidence Sensitivity
         """
         twins = audit_df[audit_df['_cf_type'] != 'Original']
-        
-        if len(twins) == 0:
-            return 0.0
+        if len(twins) == 0: return 0.0
+        return round(twins['prob_delta'].abs().mean(), 4)
 
-        # prob_delta was calculated in Module 4 (Prob_Twin - Prob_Original)
-        sensitivity = twins['prob_delta'].abs().mean()
+    @staticmethod
+    def rank_bias_conditions(audit_df: pd.DataFrame) -> list:
+        """
+        Metric 4: Bias Driver Analysis
+        Identifies specific conditions (e.g. 'gender=Female') associated with negative flips.
+        """
+        # Ensure 'changed_attr' exists for logic
+        if 'changed_attr' not in audit_df.columns:
+             audit_df['changed_attr'] = audit_df['_cf_type'].apply(
+                lambda x: x.split('(')[1].split('=')[0] if '(' in x else 'unknown'
+            )
+
+        # We look for where label_changed is True
+        flips = audit_df[audit_df['label_changed'] == True].copy()
         
-        return round(sensitivity, 4)
+        bias_counts = {}
+        
+        # Iterate through unique IDs that had a flip
+        # (Assuming 'ID' column was added in the backend before passing here)
+        if 'ID' not in flips.columns:
+            return []
+
+        for uid in flips['ID'].unique():
+            # Get the whole family (Original + Twins) for this ID
+            family = audit_df[audit_df['ID'] == uid]
+            
+            # Safe access to original
+            try:
+                original = family[family['_cf_type'] == 'Original'].iloc[0]
+            except IndexError:
+                continue # Skip if original is missing (edge case)
+            
+            # Look at the twins that flipped
+            flipped_twins = flips[flips['ID'] == uid]
+            
+            for _, twin in flipped_twins.iterrows():
+                attr_name = twin['changed_attr']
+                
+                # Check if attribute exists in data to avoid KeyError
+                if attr_name not in original or attr_name not in twin:
+                    continue
+
+                penalized_value = None
+                
+                # Logic: Find which value got the '0' (Reject)
+                if original['model_prediction'] == 0 and twin['model_prediction'] == 1:
+                    # Original was rejected. The Original's value is the "bad" one.
+                    penalized_value = f"{attr_name}={original[attr_name]}"
+                    
+                elif original['model_prediction'] == 1 and twin['model_prediction'] == 0:
+                    # Twin was rejected. The Twin's value is the "bad" one.
+                    penalized_value = f"{attr_name}={twin[attr_name]}"
+                
+                if penalized_value:
+                    bias_counts[penalized_value] = bias_counts.get(penalized_value, 0) + 1
+                    
+        # Sort by frequency (Highest bias first)
+        sorted_bias = sorted(bias_counts.items(), key=lambda x: x[1], reverse=True)
+        return sorted_bias
 
     @classmethod
     def generate_scorecard(cls, audit_df: pd.DataFrame):
-        """Aggregates all metrics into a final dictionary."""
+        """Aggregates all metrics."""
+        
+        # Ensure helper columns exist locally if not passed
+        if 'changed_attr' not in audit_df.columns:
+            audit_df['changed_attr'] = audit_df['_cf_type'].apply(
+                lambda x: x.split('(')[1].split('=')[0] if '(' in x else 'unknown'
+            )
+            
         return {
             "consistency_score": cls.calculate_consistency_score(audit_df),
             "flip_rates": cls.calculate_flip_rate(audit_df),
-            "confidence_sensitivity": cls.calculate_confidence_sensitivity(audit_df)
+            "confidence_sensitivity": cls.calculate_confidence_sensitivity(audit_df),
+            "bias_ranking": cls.rank_bias_conditions(audit_df)
         }
