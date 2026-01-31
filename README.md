@@ -65,5 +65,5 @@ An aggregated ethical assessment is generated including bias severity score, min
 - Session-based state management
 
 ---
-Built with a lot of suffering,
+Built with a lot of suffering, \n
 Adwaith Shameer, Vishnu Sarang and Rahul Arun for the ISTE SC MBCET, 2026.
