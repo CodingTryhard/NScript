@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Ethics Audit – Configure Audit</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: { primary: "#195de6", "background-light": "#f6f6f8" },
+      fontFamily: { display: ["Inter", "sans-serif"] }
+    }
+  }
+}
+</script>
+</head>
+
+<body class="bg-background-light min-h-screen flex font-display text-slate-900">
+
+<!-- SIDEBAR -->
+<aside class="hidden lg:flex w-72 flex-col border-r border-slate-200 bg-white">
+  <div class="p-6">
+    <div class="flex items-center gap-2 mb-8">
+      <span class="material-symbols-outlined text-primary text-3xl">policy</span>
+      <span class="font-bold text-xl">AI Ethics Audit</span>
+    </div>
+
+    <nav class="flex flex-col gap-2">
+      <div class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400">
+        <span class="material-symbols-outlined">upload_file</span>
+        <span class="text-sm">Upload Data</span>
+      </div>
+
+      <div class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary border-l-4 border-primary">
+        <span class="material-symbols-outlined">tune</span>
+        <span class="font-bold text-sm">Configure Audit</span>
+      </div>
+
+      <div class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400">
+        <span class="material-symbols-outlined">analytics</span>
+        <span class="text-sm">Audit Results</span>
+      </div>
+    </nav>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="flex-1 overflow-y-auto">
+  <div class="max-w-[1024px] mx-auto px-10 py-12">
+
+    <div class="mb-8">
+      <span class="inline-block text-xs font-bold uppercase tracking-wide text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+        Step 2 of 3
+      </span>
+      <h1 class="text-3xl font-black mb-2">Configure Ethical Audit</h1>
+      <p class="text-slate-500 max-w-2xl">
+        Select the target decision and protected attributes used for fairness evaluation.
+      </p>
+    </div>
+
+    <form
+      action="/configure"
+      method="POST"
+      class="bg-white rounded-xl border border-slate-200 p-8 space-y-8"
+    >
+
+      <input type="hidden" name="session_id" value="{{ session_id }}"/>
+
+      <!-- TARGET -->
+      <div>
+        <label class="block text-sm font-bold mb-2">Target Label</label>
+        <select
+          name="target"
+          required
+          class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm focus:ring-primary focus:border-primary"
+        >
+          <option value="">Select target column</option>
+          {% for col in columns %}
+            <option value="{{ col }}">{{ col }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <!-- SENSITIVE -->
+      <div>
+        <label class="block text-sm font-bold mb-3">Protected Attributes</label>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+          {% for col in columns %}
+            <label class="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                name="sensitive"
+                value="{{ col }}"
+                class="rounded border-slate-300 text-primary focus:ring-primary"
+              />
+              {{ col }}
+            </label>
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- ACTION -->
+      <div class="flex justify-end pt-6 border-t border-slate-200">
+        <button
+          type="submit"
+          class="bg-primary text-white font-bold px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center gap-2"
+        >
+          Run Ethical Audit
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+</main>
+
+</body>
+</html>

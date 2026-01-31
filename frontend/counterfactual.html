@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>AI Ethics Audit – Counterfactual Analysis</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#195de6",
+        "background-light": "#f6f6f8"
+      },
+      fontFamily: {
+        display: ["Inter", "sans-serif"]
+      }
+    }
+  }
+}
+</script>
+</head>
+
+<body class="bg-background-light min-h-screen flex font-display text-slate-900">
+
+<!-- SIDEBAR -->
+<aside class="hidden lg:flex w-72 flex-col border-r border-slate-200 bg-white">
+  <div class="p-6">
+    <div class="flex items-center gap-2 mb-8">
+      <span class="material-symbols-outlined text-primary text-3xl">policy</span>
+      <span class="font-bold text-xl">AI Ethics Audit</span>
+    </div>
+
+    <nav class="flex flex-col gap-2">
+      <div class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400">
+        <span class="material-symbols-outlined">upload_file</span>
+        <span class="text-sm">Upload Data</span>
+      </div>
+
+      <div class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400">
+        <span class="material-symbols-outlined">tune</span>
+        <span class="text-sm">Configure Audit</span>
+      </div>
+
+      <div class="flex items-center gap-3 px-3 py-3 rounded-lg bg-primary/10 text-primary border-l-4 border-primary">
+        <span class="material-symbols-outlined">compare_arrows</span>
+        <span class="font-bold text-sm">Counterfactual Analysis</span>
+      </div>
+
+      <div class="flex items-center gap-3 px-3 py-3 rounded-lg text-slate-400">
+        <span class="material-symbols-outlined">analytics</span>
+        <span class="text-sm">Audit Results</span>
+      </div>
+    </nav>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="flex-1 overflow-y-auto">
+  <div class="max-w-[1100px] mx-auto px-10 py-12">
+
+    <!-- HEADER -->
+    <div class="mb-8">
+      <span class="inline-block text-xs font-bold uppercase tracking-wide text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+        Counterfactual Fairness
+      </span>
+      <h1 class="text-3xl font-black mb-2">Individual-Level Fairness Analysis</h1>
+      <p class="text-slate-500 max-w-3xl">
+        This section evaluates whether an individual’s outcome changes when only protected attributes
+        are modified, holding all other features constant.
+      </p>
+    </div>
+
+    <!-- INSTANCE SELECTOR -->
+    <div class="mb-8 bg-white border border-slate-200 rounded-xl p-6">
+      <label class="block text-sm font-bold mb-2">
+        Audited Instance
+      </label>
+      <select class="w-full max-w-md rounded-lg border border-slate-300 px-3 py-2 text-sm">
+        {% for inst in instances %}
+          <option value="{{ inst.id }}">Instance #{{ inst.id }}</option>
+        {% endfor %}
+      </select>
+      <p class="text-xs text-slate-500 mt-2">
+        Select a representative individual from the audited sample.
+      </p>
+    </div>
+
+    <!-- ORIGINAL DECISION -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+
+      <div class="bg-white border border-slate-200 rounded-xl p-6">
+        <h3 class="text-sm font-bold uppercase text-slate-500 mb-2">Original Decision</h3>
+        <p class="text-3xl font-black mb-2">
+          {{ current_instance.original_decision }}
+        </p>
+        <p class="text-sm text-slate-500">
+          Model confidence: {{ current_instance.original_confidence }}%
+        </p>
+      </div>
+
+      <div class="bg-white border border-slate-200 rounded-xl p-6">
+        <h3 class="text-sm font-bold uppercase text-slate-500 mb-2">Protected Attributes</h3>
+        <ul class="text-sm space-y-1">
+          {% for attr, value in current_instance.original_attrs.items() %}
+            <li><strong>{{ attr }}:</strong> {{ value }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- COUNTERFACTUALS -->
+    <div class="space-y-6">
+
+      <h2 class="text-xl font-bold">Counterfactual Scenarios</h2>
+
+      {% for cf in current_instance.counterfactuals %}
+      <div class="bg-white border border-slate-200 rounded-xl p-6 flex flex-col gap-4">
+
+        <div class="flex justify-between items-center">
+          <p class="font-bold">
+            Changed Attribute: {{ cf.changed_attribute }}
+          </p>
+          {% if cf.decision_flipped %}
+            <span class="text-xs font-bold text-red-600 bg-red-50 px-3 py-1 rounded-full">
+              Decision Changed
+            </span>
+          {% else %}
+            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">
+              No Change
+            </span>
+          {% endif %}
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div>
+            <p class="text-slate-500">Counterfactual Value</p>
+            <p class="font-semibold">{{ cf.new_value }}</p>
+          </div>
+          <div>
+            <p class="text-slate-500">New Decision</p>
+            <p class="font-semibold">{{ cf.new_decision }}</p>
+          </div>
+        </div>
+
+        <p class="text-xs text-slate-500">
+          Confidence changed from {{ cf.original_confidence }}% to {{ cf.new_confidence }}%.
+        </p>
+
+      </div>
+      {% endfor %}
+
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="mt-10 text-xs text-slate-500 border-t border-slate-200 pt-6">
+      Counterfactual testing evaluates consistency under controlled changes. It does not capture
+      all real-world dependencies between attributes.
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

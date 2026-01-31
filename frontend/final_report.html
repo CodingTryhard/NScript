@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Final Ethical Assessment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#195de6"
+      },
+      fontFamily: {
+        display: ["Inter", "sans-serif"]
+      }
+    }
+  }
+}
+</script>
+</head>
+
+<body class="bg-slate-50 font-display text-slate-900">
+
+<div class="max-w-5xl mx-auto px-8 py-12 space-y-10">
+
+  <!-- HEADER -->
+  <div>
+    <span class="inline-block text-xs font-bold uppercase tracking-wide text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+      Final Assessment
+    </span>
+    <h1 class="text-3xl font-black">Ethical Risk Summary</h1>
+    <p class="text-slate-500 mt-2">
+      Aggregate indicators derived from proxy risk, counterfactual stability, and model sensitivity.
+    </p>
+  </div>
+
+  <!-- NEEDLE GAUGE -->
+  <div class="bg-white rounded-xl border border-slate-200 p-8 text-center">
+    <p class="text-sm text-slate-500 mb-2">Overall Bias Severity</p>
+    <p class="text-5xl font-black text-slate-900">
+      {{ bias_score }}<span class="text-lg text-slate-400">/100</span>
+    </p>
+
+    {% if bias_score < 30 %}
+      <p class="mt-2 text-emerald-600 font-bold">Low Risk</p>
+    {% elif bias_score < 60 %}
+      <p class="mt-2 text-amber-600 font-bold">Review Recommended</p>
+    {% else %}
+      <p class="mt-2 text-red-600 font-bold">High Risk</p>
+    {% endif %}
+  </div>
+
+  <!-- STATS -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white rounded-xl border p-6 text-center">
+      <span class="material-symbols-outlined text-red-500 text-3xl mb-2">gavel</span>
+      <p class="text-3xl font-black">{{ critical_count }}</p>
+      <p class="text-sm text-slate-500">Critical Violations</p>
+    </div>
+
+    <div class="bg-white rounded-xl border p-6 text-center">
+      <span class="material-symbols-outlined text-amber-500 text-3xl mb-2">flag</span>
+      <p class="text-3xl font-black">{{ minor_flags }}</p>
+      <p class="text-sm text-slate-500">Minor Flags</p>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="bg-slate-100 border border-slate-200 rounded-xl p-6 text-sm text-slate-600 leading-relaxed">
+    {{ legal_disclaimer }}
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,601 @@
+income,credit_score,years_employed,gender,race,education,loan_approved
+67450,725,12,Male,Black,Bachelors,1
+57926,624,9,Female,Black,Bachelors,0
+69715,732,14,Male,Other,High School,1
+82845,761,12,Male,White,Masters,0
+56487,704,8,Female,White,Bachelors,0
+56487,792,8,Male,Black,High School,1
+83688,633,14,Male,White,Bachelors,0
+71511,605,9,Male,Black,Bachelors,1
+52957,573,9,Female,Black,Bachelors,1
+68138,769,7,Male,Asian,High School,0
+53048,719,15,Male,Black,Masters,0
+53014,676,16,Female,Black,Bachelors,0
+63629,696,4,Female,White,High School,1
+31300,612,3,Female,White,High School,1
+34126,826,17,Male,White,High School,0
+51565,687,18,Male,White,Masters,1
+44807,686,3,Male,Black,High School,1
+64713,723,6,Female,Black,High School,1
+46379,708,9,Male,Black,Masters,1
+38815,693,17,Male,Asian,High School,0
+81984,632,18,Female,Other,High School,1
+56613,708,3,Female,Asian,High School,0
+61012,792,9,Female,Black,High School,1
+38628,760,0,Female,Black,High School,0
+51834,775,17,Female,White,Bachelors,1
+61663,649,4,Male,White,High School,1
+42735,620,14,Female,White,High School,1
+65635,672,16,Male,Other,Bachelors,1
+50990,683,2,Male,Asian,Bachelors,1
+55624,745,11,Female,White,Bachelors,0
+50974,578,1,Female,White,Bachelors,0
+87784,771,0,Female,Asian,High School,1
+59797,670,16,Male,White,Bachelors,1
+44134,654,15,Female,White,Bachelors,1
+72338,619,4,Female,Asian,High School,0
+41687,580,14,Female,White,Masters,0
+63132,729,2,Female,White,High School,0
+30604,684,6,Female,Black,Bachelors,1
+40077,602,10,Male,Asian,High School,1
+62952,602,9,Male,Black,Bachelors,1
+71076,659,8,Male,White,Bachelors,0
+62570,780,13,Female,White,Masters,1
+58265,664,12,Female,White,High School,0
+55483,589,1,Female,Black,Bachelors,0
+37822,665,2,Male,Asian,Bachelors,1
+49202,663,6,Female,White,Bachelors,0
+53090,518,17,Female,Asian,Bachelors,1
+75856,676,2,Female,White,Bachelors,0
+65154,666,9,Male,White,Bachelors,1
+33554,721,6,Female,White,High School,1
+64861,790,8,Male,White,Bachelors,0
+54223,747,16,Female,Black,High School,0
+49846,663,10,Male,Black,Masters,0
+69175,613,6,Male,White,Bachelors,1
+75464,834,13,Male,Black,Masters,0
+73969,683,18,Female,White,High School,1
+47411,680,3,Female,Asian,Masters,0
+55361,678,5,Male,Other,Masters,1
+64968,691,9,Male,White,Bachelors,0
+74633,671,6,Female,Black,Bachelors,0
+52812,645,12,Female,White,High School,0
+57215,647,13,Male,White,Masters,1
+43404,678,3,Female,White,Bachelors,1
+42056,647,7,Female,Asian,High School,0
+72187,637,4,Female,Black,High School,1
+80343,686,0,Female,White,Masters,0
+58919,664,3,Male,Asian,Masters,1
+75052,770,2,Female,Black,Masters,1
+65424,520,8,Female,Asian,Bachelors,0
+50323,745,7,Male,Black,High School,1
+65420,754,0,Male,Black,High School,1
+83070,555,5,Female,White,High School,0
+59462,659,8,Female,White,High School,1
+83469,657,6,Female,Other,High School,0
+20703,595,3,Female,White,High School,1
+72328,633,12,Male,Other,Bachelors,0
+61305,613,16,Male,Black,Masters,0
+55514,785,1,Male,White,Bachelors,1
+61376,736,4,Female,White,Masters,0
+30186,756,11,Female,White,Bachelors,1
+56704,723,7,Female,Other,High School,1
+65356,612,5,Female,White,High School,0
+82168,648,7,Male,White,High School,1
+52225,709,17,Male,White,High School,1
+47872,606,2,Female,White,Bachelors,1
+52473,722,11,Male,White,High School,1
+73731,665,2,Female,White,High School,0
+64931,657,5,Female,Asian,High School,0
+52053,722,1,Male,White,Masters,0
+67699,706,11,Female,White,Bachelors,1
+61456,658,1,Female,White,Bachelors,1
+74529,749,5,Male,White,High School,1
+49469,615,16,Female,Other,Bachelors,1
+55085,716,2,Female,Black,Bachelors,1
+54118,715,1,Male,White,Bachelors,1
+38047,661,19,Female,Black,Masters,1
+64441,699,7,Male,White,High School,1
+63915,604,11,Female,White,Masters,1
+60076,735,3,Male,Other,Masters,0
+56481,668,4,Male,Asian,High School,0
+38769,648,12,Male,Other,Bachelors,0
+53690,742,14,Female,White,Masters,0
+54859,637,15,Male,Black,High School,0
+47965,595,9,Male,White,Bachelors,0
+57580,586,15,Male,White,Masters,1
+66060,716,11,Male,Asian,Bachelors,0
+88292,603,16,Male,White,High School,0
+62618,785,15,Female,Asian,Bachelors,1
+63863,555,11,Female,Black,High School,0
+58883,781,7,Female,White,Bachelors,1
+31218,692,19,Female,Black,High School,0
+59602,674,2,Female,Black,Bachelors,0
+60903,647,15,Female,White,Bachelors,1
+96948,703,12,Female,Asian,Bachelors,0
+57114,677,18,Male,Black,Bachelors,1
+64523,746,7,Female,White,Bachelors,0
+59479,686,4,Male,Black,Bachelors,0
+42469,689,19,Male,Other,High School,1
+77142,658,7,Female,White,Bachelors,0
+71278,676,11,Male,Asian,High School,1
+71865,698,0,Male,White,Masters,0
+46359,577,19,Male,Asian,High School,1
+81041,599,5,Male,Black,Bachelors,0
+38972,724,17,Female,White,Bachelors,1
+68802,690,7,Female,White,Bachelors,0
+92856,668,6,Female,Asian,High School,1
+45141,681,0,Female,White,Bachelors,0
+51505,700,15,Female,Black,Bachelors,0
+61494,647,11,Female,White,Bachelors,0
+52447,633,5,Female,Asian,High School,0
+36740,691,19,Female,Black,Bachelors,0
+61028,621,1,Female,Other,Bachelors,1
+44065,704,13,Female,White,Bachelors,1
+67103,577,3,Male,Black,Bachelors,1
+46208,741,0,Female,Black,Bachelors,0
+83249,708,17,Male,White,High School,0
+48251,695,12,Male,White,High School,1
+55169,738,1,Male,White,High School,0
+72202,779,8,Male,Black,High School,0
+41537,740,1,Female,Black,Bachelors,0
+63411,569,8,Male,White,Bachelors,1
+79607,603,0,Female,Black,High School,1
+35887,642,10,Female,White,Masters,0
+62769,681,2,Male,White,High School,0
+63898,711,19,Female,Other,Bachelors,1
+71727,636,3,Male,Other,Bachelors,1
+41445,691,17,Male,Black,High School,0
+40193,634,5,Female,White,High School,0
+67829,643,2,Female,Asian,Bachelors,0
+64454,595,10,Male,White,High School,1
+63757,624,14,Female,White,Masters,1
+65196,598,4,Female,White,Bachelors,0
+49799,621,19,Female,Black,Masters,1
+63483,743,9,Male,Black,High School,1
+64396,623,11,Male,White,Bachelors,1
+49284,837,14,Female,Black,Bachelors,1
+87986,709,16,Female,Other,Bachelors,1
+67107,691,9,Female,White,High School,1
+42130,628,5,Female,Black,Bachelors,1
+69848,722,17,Female,Asian,Bachelors,1
+45379,645,12,Male,White,Bachelors,0
+71806,687,2,Female,White,High School,0
+77378,833,9,Male,Black,Masters,1
+47689,674,13,Female,Black,High School,1
+74450,748,5,Male,Asian,Masters,1
+66191,637,2,Female,White,Masters,0
+72330,677,15,Male,Other,Masters,1
+88451,786,6,Female,White,Bachelors,1
+56319,642,19,Male,White,Bachelors,1
+48693,788,13,Male,Black,Masters,0
+46657,722,8,Male,White,High School,1
+47762,646,14,Male,White,Bachelors,1
+58843,717,2,Male,White,Bachelors,0
+65117,738,1,Male,White,Bachelors,1
+64150,717,1,Female,White,High School,1
+72407,585,2,Male,Other,Bachelors,1
+60195,636,17,Female,White,Masters,0
+81803,665,13,Female,Black,High School,1
+56030,675,19,Female,Asian,Masters,1
+100802,717,17,Female,Other,High School,1
+69385,690,9,Female,White,High School,0
+47142,599,1,Male,Asian,High School,1
+43936,702,0,Male,Black,High School,0
+67237,716,3,Male,Black,Masters,1
+56648,713,13,Female,Black,High School,0
+70710,744,0,Male,Asian,Bachelors,0
+67098,730,13,Male,White,High School,1
+58907,707,15,Male,Black,Bachelors,1
+47298,675,13,Male,Black,Bachelors,1
+37277,580,19,Male,Asian,High School,1
+53302,705,2,Female,Other,High School,0
+72845,692,2,Male,White,Masters,1
+63211,696,8,Female,Other,High School,1
+41313,603,5,Female,White,Bachelors,1
+62597,615,12,Female,White,High School,0
+65779,743,1,Female,White,Bachelors,1
+46742,677,7,Female,White,High School,1
+62305,720,1,Male,Black,Bachelors,1
+60873,681,3,Male,White,High School,0
+42855,681,14,Male,White,Masters,0
+65366,736,3,Female,Other,High School,1
+68411,649,12,Male,Asian,Bachelors,1
+76245,685,11,Male,Asian,Bachelors,1
+75807,652,12,Female,Asian,High School,1
+39334,653,13,Female,Black,Bachelors,0
+45932,661,19,Female,White,High School,0
+67725,693,17,Female,White,Masters,1
+67706,651,5,Male,Black,Masters,0
+67725,755,10,Female,White,Masters,1
+117790,626,1,Female,Black,High School,0
+68563,668,18,Male,White,Bachelors,0
+77033,653,18,Male,White,Bachelors,1
+74310,766,4,Female,Black,Masters,0
+69770,691,18,Male,Black,Bachelors,1
+55270,741,1,Female,Black,Masters,1
+71384,590,9,Female,Black,Bachelors,1
+48407,696,1,Male,White,Bachelors,1
+56447,733,10,Male,White,High School,0
+52719,684,17,Female,Asian,Bachelors,0
+61228,743,14,Female,Black,Bachelors,1
+94719,648,8,Female,White,Bachelors,0
+31991,764,18,Male,Asian,Bachelors,0
+70293,817,8,Female,White,Bachelors,1
+35809,658,2,Female,White,High School,1
+52921,653,8,Female,White,Bachelors,1
+76334,767,13,Female,Black,Bachelors,0
+60964,774,18,Female,Black,Bachelors,0
+43833,648,6,Male,White,High School,1
+49270,654,15,Female,Asian,High School,0
+70193,663,15,Female,White,High School,0
+49044,599,0,Female,White,Bachelors,0
+63246,624,3,Female,White,High School,1
+60683,619,3,Male,White,Bachelors,1
+50225,633,6,Male,White,Masters,1
+92159,677,7,Male,Black,High School,1
+69508,694,16,Female,Asian,Bachelors,1
+29622,773,4,Female,Black,Bachelors,0
+62796,620,6,Male,White,Masters,1
+50073,739,19,Male,White,Bachelors,0
+72786,667,19,Male,White,Bachelors,1
+48112,677,3,Female,White,Masters,0
+58278,720,5,Female,Asian,Bachelors,1
+67574,612,6,Male,White,Masters,1
+72986,702,17,Male,Black,High School,0
+41995,689,4,Male,Asian,Masters,1
+54982,709,19,Female,White,Bachelors,1
+52875,697,2,Female,Asian,Bachelors,0
+50200,827,6,Female,Black,High School,1
+86481,641,13,Male,Black,Bachelors,1
+66074,648,6,Male,Black,High School,1
+41086,642,4,Female,White,Masters,1
+73767,646,4,Male,White,Masters,1
+91832,641,1,Female,White,High School,1
+75486,751,5,Male,White,Masters,0
+37209,765,14,Male,Black,Bachelors,0
+52736,645,9,Male,White,Bachelors,0
+79003,630,6,Male,Other,High School,0
+49384,708,4,Female,Black,High School,0
+66657,646,0,Male,White,High School,1
+71619,717,12,Female,White,High School,0
+46096,692,17,Female,Asian,Masters,0
+59107,589,12,Female,Asian,High School,0
+11380,772,17,Male,Black,Masters,1
+44634,787,4,Female,White,High School,1
+56211,643,12,Female,White,Bachelors,1
+41283,656,3,Female,White,Bachelors,0
+84486,697,16,Male,White,Masters,1
+38547,700,2,Male,Asian,High School,0
+53399,719,16,Female,Black,Bachelors,1
+61961,800,10,Male,Black,Bachelors,1
+81619,669,19,Female,Asian,High School,1
+38462,632,3,Female,Black,High School,1
+77447,597,1,Male,White,Bachelors,1
+60153,636,19,Female,White,Bachelors,1
+45277,678,15,Male,Other,Bachelors,0
+66931,787,17,Male,White,High School,1
+62985,648,7,Female,Other,Bachelors,1
+50996,693,2,Male,Asian,Bachelors,0
+61047,679,8,Male,White,Bachelors,0
+54220,751,19,Female,Black,Masters,0
+61702,831,5,Female,Asian,Bachelors,1
+69931,648,9,Male,Black,Bachelors,0
+83790,650,9,Male,Other,High School,0
+41432,742,12,Female,Other,Bachelors,1
+91995,720,16,Male,White,High School,1
+30718,790,8,Male,White,Bachelors,1
+57723,715,16,Male,Other,Bachelors,1
+68824,658,8,Male,Black,Masters,0
+64214,715,8,Male,White,High School,1
+50659,746,0,Male,White,Bachelors,0
+56878,729,1,Male,Black,Bachelors,1
+52604,710,15,Female,Other,High School,1
+51159,744,0,Female,Asian,High School,1
+72744,750,9,Female,Black,High School,1
+65355,762,17,Female,White,High School,0
+49606,718,7,Female,White,High School,0
+73493,669,10,Male,Asian,High School,1
+64609,688,1,Male,White,High School,1
+72192,752,7,Male,White,Bachelors,1
+69444,630,7,Male,White,Bachelors,0
+47565,702,16,Female,Black,Masters,1
+51597,656,14,Male,Other,Bachelors,1
+71209,681,16,Male,White,Bachelors,1
+69155,756,12,Female,White,Masters,0
+59686,691,18,Male,Black,Bachelors,1
+61759,682,4,Male,Other,Bachelors,1
+79164,598,11,Female,White,Bachelors,0
+51126,724,0,Male,White,High School,0
+68206,718,4,Male,White,High School,1
+56967,809,7,Male,Asian,Bachelors,0
+56734,661,12,Male,White,Bachelors,0
+76481,693,7,Male,White,High School,1
+72381,694,10,Female,Black,Masters,1
+72202,774,0,Female,Asian,Bachelors,1
+79582,674,12,Female,White,Bachelors,0
+60315,696,18,Female,Asian,Masters,1
+70229,716,2,Female,White,Bachelors,0
+55345,691,16,Female,Black,Masters,0
+64862,653,4,Male,White,Bachelors,1
+58047,691,19,Female,Black,High School,0
+61454,744,7,Female,White,Bachelors,0
+68927,618,13,Male,Asian,Bachelors,1
+47726,687,3,Male,Black,Bachelors,1
+91385,637,10,Female,Black,Masters,1
+44909,751,19,Male,Asian,Bachelors,0
+41787,588,14,Female,Asian,Bachelors,0
+77371,646,18,Male,White,Masters,1
+71874,702,6,Female,White,Bachelors,0
+69361,773,18,Male,Other,Bachelors,1
+69425,676,18,Male,White,Masters,1
+59816,646,10,Female,Black,High School,1
+46541,792,4,Female,Other,Bachelors,1
+61137,593,4,Female,White,Masters,1
+49842,548,7,Female,Black,Bachelors,0
+74626,706,9,Female,White,Bachelors,1
+57794,649,5,Male,Black,Bachelors,0
+47617,618,14,Female,White,Bachelors,1
+55179,722,15,Female,White,Masters,1
+66193,694,16,Male,Black,High School,1
+51544,646,7,Male,Asian,High School,0
+47666,603,7,Female,Asian,High School,1
+63655,732,8,Male,Black,Bachelors,1
+63674,719,1,Male,White,Bachelors,0
+52395,674,14,Female,Black,Masters,1
+52934,790,17,Male,White,Bachelors,1
+63480,615,2,Male,Other,Bachelors,0
+38278,588,16,Female,Asian,High School,1
+38888,638,3,Female,Black,Bachelors,1
+49223,677,3,Male,Other,Bachelors,1
+56798,694,13,Male,White,High School,1
+64663,665,8,Female,Black,High School,1
+82130,701,8,Male,White,High School,1
+72864,604,17,Male,Other,High School,1
+57600,766,9,Male,White,Bachelors,1
+59714,675,3,Female,Black,High School,0
+44962,747,11,Male,Asian,Bachelors,1
+59722,700,7,Male,White,Masters,1
+55670,707,1,Female,White,Bachelors,0
+64840,714,12,Male,Asian,Masters,0
+47591,706,15,Male,White,Bachelors,1
+67790,718,1,Female,White,Bachelors,0
+82991,759,10,Female,White,Masters,1
+58368,691,9,Female,White,High School,1
+66025,722,14,Female,Asian,Masters,0
+70352,674,16,Male,Black,High School,1
+53981,766,7,Male,White,Bachelors,1
+63361,639,17,Female,White,High School,1
+60188,788,8,Female,White,Bachelors,1
+61465,677,7,Male,White,Bachelors,1
+48404,594,13,Female,White,Bachelors,0
+60367,687,17,Male,White,High School,1
+67469,639,19,Female,White,High School,0
+81767,730,19,Male,Black,High School,1
+74389,640,11,Female,White,High School,0
+92297,653,18,Female,Black,Masters,0
+48489,566,13,Male,Black,High School,0
+73084,652,16,Female,Black,Masters,1
+62750,534,2,Male,Black,Masters,1
+92847,584,6,Male,Black,High School,1
+47875,725,16,Male,Asian,Bachelors,0
+47404,727,11,Male,Black,High School,0
+51009,705,8,Male,Black,High School,1
+28141,621,14,Female,Asian,High School,1
+52113,677,17,Female,Black,Bachelors,1
+48613,679,12,Male,White,Bachelors,0
+62255,610,7,Female,White,Bachelors,1
+65126,770,13,Male,White,Bachelors,0
+88142,732,7,Female,Asian,High School,0
+74256,666,13,Female,Black,Bachelors,1
+51346,681,6,Female,Other,Bachelors,1
+46523,692,11,Female,Black,High School,1
+67378,557,10,Male,White,High School,1
+40196,665,10,Male,White,Bachelors,1
+87471,639,12,Female,Black,High School,1
+77691,619,17,Female,Black,Bachelors,0
+52962,663,1,Male,Other,High School,1
+34302,787,14,Female,White,High School,1
+80308,718,19,Male,Black,High School,0
+58281,645,17,Male,Black,High School,0
+78567,714,14,Male,Black,Bachelors,1
+36083,763,18,Female,Black,Bachelors,1
+51009,735,11,Male,Asian,Bachelors,1
+60078,683,12,Female,White,Masters,0
+60704,641,10,Male,Black,Bachelors,0
+53249,721,4,Female,Black,Bachelors,0
+69342,703,0,Female,Asian,High School,1
+43985,733,2,Female,Asian,Bachelors,0
+57864,718,18,Male,White,Bachelors,1
+61804,742,6,Male,White,High School,1
+67716,647,11,Female,Other,Bachelors,1
+70674,759,14,Female,Black,High School,1
+43130,691,4,Female,Other,Bachelors,1
+36988,804,14,Male,White,Masters,0
+79165,638,7,Male,Black,Masters,0
+64984,784,9,Male,Asian,Bachelors,1
+48772,691,15,Male,Other,Bachelors,1
+83267,640,7,Female,White,Bachelors,1
+61735,650,0,Female,Black,Bachelors,1
+77689,660,11,Male,Black,High School,1
+61012,705,4,Male,White,Bachelors,0
+90911,711,2,Female,Black,Bachelors,1
+86330,645,0,Male,Black,Masters,1
+56265,678,3,Male,Other,Bachelors,1
+74573,808,7,Male,White,Bachelors,0
+69680,783,2,Male,White,Bachelors,0
+80529,706,9,Male,White,Bachelors,0
+45526,682,1,Male,White,Bachelors,0
+70290,687,10,Female,White,High School,1
+75876,716,9,Male,Asian,Bachelors,1
+33618,618,13,Male,White,Masters,0
+42251,664,6,Female,Other,Bachelors,1
+29411,579,1,Female,Other,High School,0
+55958,703,8,Female,Black,Bachelors,1
+70763,718,15,Male,Other,Masters,1
+82535,651,12,Female,Asian,High School,1
+61111,774,8,Male,Black,Bachelors,1
+84429,606,19,Male,White,Masters,0
+39298,592,3,Male,White,Bachelors,1
+34449,693,9,Female,Black,Masters,1
+59166,742,11,Female,Asian,Bachelors,1
+65760,781,16,Female,White,Bachelors,1
+59509,652,13,Female,Asian,Bachelors,1
+28988,744,13,Female,Black,High School,1
+58663,677,1,Male,White,High School,1
+40432,669,19,Male,Other,Bachelors,1
+70045,733,10,Male,Black,High School,1
+65498,719,15,Male,White,Bachelors,1
+45901,585,18,Female,Black,Masters,1
+52291,768,5,Female,White,Masters,1
+44111,762,18,Male,Black,Bachelors,1
+59059,642,4,Female,White,Masters,0
+74327,703,3,Female,White,Bachelors,1
+45214,709,14,Male,Other,Bachelors,1
+67560,695,3,Male,Black,High School,1
+52046,646,19,Female,White,Bachelors,0
+48106,639,9,Female,White,Bachelors,0
+58394,678,2,Male,Other,Bachelors,0
+44471,750,4,Male,White,Bachelors,0
+51695,712,5,Male,White,High School,1
+42031,657,7,Female,White,Bachelors,0
+89470,726,6,Male,White,Masters,1
+60528,509,9,Male,Asian,Bachelors,1
+49504,748,5,Female,Black,Masters,1
+63209,575,13,Female,White,Masters,1
+58315,658,3,Female,Black,Masters,0
+56685,612,12,Female,White,Masters,1
+69212,602,19,Female,Other,Masters,0
+71362,749,16,Male,Other,Bachelors,1
+52042,651,6,Male,White,High School,1
+51362,700,3,Female,Asian,Bachelors,1
+55874,677,13,Female,Asian,Bachelors,1
+25471,708,2,Female,White,High School,0
+37272,684,4,Female,White,High School,0
+80503,603,15,Female,White,Masters,1
+84674,739,19,Male,Asian,Masters,0
+56264,650,3,Male,Other,Masters,1
+68648,586,1,Male,Asian,Bachelors,0
+64668,654,17,Male,Asian,High School,1
+106183,770,18,Female,Black,High School,1
+76793,731,18,Male,Asian,High School,1
+58081,659,16,Female,Asian,High School,1
+45666,659,13,Female,White,High School,1
+35903,660,18,Female,Black,Masters,0
+63051,804,12,Male,Asian,Bachelors,0
+48654,702,11,Female,White,High School,0
+38666,705,5,Male,Asian,High School,1
+50301,741,3,Male,White,Bachelors,1
+43776,694,18,Female,Black,High School,1
+85307,664,15,Female,Asian,Masters,1
+73224,668,12,Female,White,Bachelors,0
+59880,675,3,Male,White,Bachelors,1
+82199,677,16,Female,White,High School,1
+61160,723,0,Male,Asian,High School,1
+47080,683,17,Female,White,Bachelors,0
+82846,723,19,Female,Other,Bachelors,1
+68083,675,16,Male,White,Bachelors,1
+44441,684,14,Male,Other,High School,1
+57144,560,10,Male,Other,Bachelors,1
+46865,734,12,Male,White,Bachelors,1
+39258,700,0,Male,Black,Masters,1
+73892,739,16,Male,White,High School,0
+88641,506,5,Female,Black,High School,1
+39021,805,3,Female,White,Bachelors,0
+68444,671,19,Male,White,Bachelors,0
+50240,746,15,Female,White,Bachelors,0
+52693,617,14,Male,White,Bachelors,1
+51114,716,14,Female,White,Bachelors,1
+47040,616,5,Female,Black,Masters,0
+60727,642,14,Male,Other,Bachelors,0
+47535,794,13,Male,White,Masters,1
+64056,668,10,Male,Black,Bachelors,0
+59246,693,6,Female,White,Masters,1
+56415,732,8,Male,Asian,Masters,1
+46386,709,15,Female,Other,High School,1
+51348,689,4,Male,Asian,Masters,1
+71330,701,19,Female,Other,High School,1
+67513,824,9,Female,White,Masters,1
+45336,676,17,Male,Asian,Bachelors,1
+61489,692,2,Female,Asian,High School,1
+71270,743,12,Female,White,Bachelors,1
+34958,746,10,Male,Other,Masters,1
+68150,751,16,Female,White,High School,1
+50060,718,12,Male,Black,Bachelors,0
+68558,611,5,Male,White,Bachelors,0
+48551,778,16,Male,White,Masters,0
+32926,611,12,Male,Black,Bachelors,0
+35586,698,18,Female,Black,High School,1
+60721,634,18,Female,White,High School,1
+63895,676,9,Female,White,Bachelors,1
+46435,699,2,Male,Asian,Bachelors,1
+69578,699,13,Female,White,Masters,0
+35077,705,18,Female,White,High School,1
+59008,776,4,Male,Other,Bachelors,1
+41834,707,4,Male,Asian,High School,0
+50222,665,19,Female,White,High School,0
+60710,737,16,Male,Asian,Bachelors,0
+47093,751,9,Male,Asian,Bachelors,1
+54231,606,4,Male,Asian,Bachelors,1
+75094,715,3,Male,Black,Masters,1
+51346,722,5,Female,White,Bachelors,1
+72535,662,3,Male,White,Masters,1
+43054,762,6,Male,White,Masters,1
+67947,670,6,Male,Black,Bachelors,0
+81623,687,17,Male,White,Masters,1
+22925,669,2,Male,Black,Bachelors,0
+48046,680,0,Male,White,High School,0
+68656,614,3,Male,White,Bachelors,1
+56954,593,5,Male,Asian,High School,0
+65567,775,8,Female,White,Bachelors,1
+50940,629,13,Male,White,Bachelors,1
+61298,620,11,Female,Asian,High School,0
+57664,550,19,Male,White,High School,1
+77516,641,3,Male,Black,Masters,0
+63816,600,11,Male,Asian,Bachelors,1
+65064,778,9,Male,White,High School,1
+53821,740,6,Female,Asian,Bachelors,1
+52685,638,2,Male,Black,Bachelors,1
+53511,815,13,Male,White,Bachelors,1
+65916,738,9,Female,White,Masters,0
+53685,660,15,Female,White,Bachelors,0
+64346,530,15,Male,Other,High School,0
+91131,817,9,Female,White,Masters,1
+73066,596,12,Female,Black,Masters,0
+55109,581,5,Female,Black,High School,0
+78018,741,11,Male,Black,High School,0
+53878,826,8,Male,White,High School,1
+29428,763,12,Male,White,Bachelors,0
+44878,713,3,Female,Black,Bachelors,0
+31938,715,10,Male,White,Bachelors,1
+54727,731,19,Female,White,Masters,0
+60276,725,17,Male,White,Bachelors,1
+85146,696,10,Male,White,High School,1
+64903,686,3,Female,Asian,High School,1
+56713,676,17,Male,White,Bachelors,1
+72441,634,0,Female,White,High School,1
+26832,663,6,Female,White,Bachelors,0
+63534,578,5,Male,Black,Masters,1
+71562,674,14,Female,Black,High School,0
+37821,620,17,Male,White,Bachelors,0
+77156,613,10,Male,Asian,Bachelors,1
+65077,690,19,Female,Black,Bachelors,0
+53770,763,14,Male,Asian,High School,0
+69491,735,15,Female,Asian,Bachelors,0
+94060,585,6,Male,White,High School,0
+62727,620,9,Male,White,Masters,0
+63723,736,11,Male,White,High School,1
+53109,621,13,Male,White,Bachelors,1
+47252,666,4,Male,Other,Bachelors,0
+72455,713,17,Female,White,Masters,1
+47158,621,4,Female,White,High School,0
+61073,686,2,Female,Asian,High School,1
+52835,599,4,Female,Black,High School,0
+67184,643,16,Female,White,High School,1
+65004,699,18,Female,White,High School,0
+75563,584,18,Male,White,Bachelors,1
+52349,706,11,Male,Asian,High School,1
+55951,678,8,Female,White,High School,1
+45318,713,0,Female,White,Masters,1
+53335,693,17,Male,Black,High School,0
+65659,761,3,Male,White,High School,0

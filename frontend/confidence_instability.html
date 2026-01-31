@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Confidence Instability – AI Ethics Audit</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: "#195de6",
+        "background-light": "#f6f6f8"
+      },
+      fontFamily: {
+        display: ["Inter", "sans-serif"]
+      }
+    }
+  }
+}
+</script>
+</head>
+
+<body class="bg-background-light font-display text-slate-900">
+
+<div class="flex min-h-screen">
+<main class="flex-1 px-10 py-12 max-w-6xl mx-auto space-y-8">
+
+  <!-- HEADER -->
+  <div>
+    <span class="inline-block text-xs font-bold uppercase tracking-wide text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+      Stability Analysis
+    </span>
+    <h1 class="text-3xl font-black mb-2">
+      Confidence Instability by Protected Attribute
+    </h1>
+    <p class="text-slate-500 max-w-3xl">
+      Average change in model confidence when protected attributes
+      are counterfactually perturbed.
+    </p>
+  </div>
+
+  <!-- CHART CARD -->
+  <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+    <h3 class="text-lg font-bold mb-4">Average Confidence Shift</h3>
+
+    {% if chart_data and chart_data|length > 0 %}
+      <canvas id="instabilityChart" height="120"></canvas>
+    {% else %}
+      <div class="text-center py-12 text-slate-500">
+        <span class="material-symbols-outlined text-4xl mb-2">verified</span>
+        <p class="font-medium">No significant confidence instability detected.</p>
+        <p class="text-sm mt-1">
+          Model predictions are stable across tested attributes.
+        </p>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- INTERPRETATION -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-white rounded-xl border border-slate-200 p-6">
+      <h4 class="font-bold mb-2 flex items-center gap-2">
+        <span class="material-symbols-outlined text-primary">insights</span>
+        How to Interpret
+      </h4>
+      <p class="text-sm text-slate-600 leading-relaxed">
+        Larger confidence shifts indicate greater sensitivity of predictions
+        to protected attributes or their proxies.
+      </p>
+    </div>
+
+    <div class="bg-primary/10 border border-primary/20 rounded-xl p-6">
+      <h4 class="font-bold mb-2 flex items-center gap-2 text-primary">
+        <span class="material-symbols-outlined">warning</span>
+        Ethical Signal
+      </h4>
+      <p class="text-sm text-slate-700 leading-relaxed">
+        High instability weakens trustworthiness and increases risk
+        of hidden bias. Human review is advised.
+      </p>
+    </div>
+  </div>
+
+  <!-- NAVIGATION -->
+  <div class="flex justify-end pt-6 border-t border-slate-200">
+    <a
+      href="/report"
+      class="bg-primary text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2"
+    >
+      View Final Ethics Report
+      <span class="material-symbols-outlined">arrow_forward</span>
+    </a>
+  </div>
+
+</main>
+</div>
+
+{% if chart_data and chart_data|length > 0 %}
+<script>
+/* SAFE DATA INJECTION */
+const chartData = {{ chart_data | tojson | safe }};
+
+const labels = chartData.map(d => d.attribute);
+const values = chartData.map(d => d.instability);
+
+const canvas = document.getElementById("instabilityChart");
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: labels,
+      datasets: [{
+        data: values,
+        backgroundColor: "#195de6",
+        borderRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: c => `${(c.raw * 100).toFixed(2)}% avg shift`
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: v => `${(v * 100).toFixed(1)}%`
+          },
+          title: {
+            display: true,
+            text: "Average Confidence Change"
+          }
+        }
+      }
+    }
+  });
+}
+</script>
+{% endif %}
+
+</body>
+</html>
